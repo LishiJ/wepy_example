@@ -1,0 +1,64 @@
+<template>
+  <button class="btn {{type}} {{className}}" @tap="bindTab" >
+    <slot>按钮</slot>
+  </button>
+</template>
+
+<script>
+import wepy from 'wepy'
+export default class Button extends wepy.component {
+  props = {
+    style: {
+      type: Object,
+      default: {}
+    },
+    className: {
+      type: String,
+      default: ''
+    },
+    // 子组件tap事件名
+    tapMethod: {
+      type: String,
+      default: 'btnTap'
+    },
+    type: {
+      type: String,     // one of ['simple', 'default']
+      default: ''
+    }
+  }
+
+  onShow () {
+    console.log(this)
+  }
+
+  methods = {
+    bindTab () {
+      this.$emit(this.tapMethod)
+    }
+  }
+}
+</script>
+
+<style lang="less" scoped>
+.btn {
+  background-image: -moz-linear-gradient( 0deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+  background-image: -webkit-linear-gradient( 0deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+  background-image: -ms-linear-gradient( 0deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+  width: 539rpx;
+  height: 94rpx;
+  border: none;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #0A0526;
+  border-radius: 47rpx;
+  &::after {
+    border: none;
+  }
+  &.simple {
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 20px 0px rgba(8, 10, 36, 0.1),inset 0px 0px 28.5px 1.5px rgba(0, 255, 254, 0.2);
+    font-size: 36rpx;
+    color: rgb(53, 109, 180);
+  }
+}
+</style>

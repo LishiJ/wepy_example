@@ -1,0 +1,148 @@
+<template>
+  <view class="gift-wrap">
+    <!-- gift list -->
+    <block wx:if="{{hasGifts}}">
+      <!-- title -->
+      <view class="material_gift_title">
+        <view class="material_gift_divider"></view>
+        <text>我的奖品</text>
+      </view>
+      <repeat for="{{giftList}}" key="item.id" index="index" item="item">
+        <view class="gift-item card">
+          <image class="gift_img" src="{{item.img}}" mode="aspectFit" lazy-load="false" />
+          <text class="gift_name">{{item.name}}</text>
+          <text class="gift_count">x{{item.count}}</text>
+        </view>
+      </repeat>
+    </block>
+    <view wx:else class="no-gift">
+      <image class="no-gift_img" src="../assets/img/personal_gift_not.png" mode="scaleToFill" lazy-load="false" />
+      <view class="no-gift_text">
+        <text>很抱歉您没有获得实物礼品</text>
+        <text>快去集卡参与活动吧！</text>
+      </view>
+    </view>
+    <!-- 填写收件信息 -->
+    <MyButton 
+      class="address_btn {{hasGifts || 'no_gift'}}"
+    >
+      {{btnText}}
+    </MyButton>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import MyButton from '../components/button/index'
+
+export default class Address extends wepy.page {
+  data = {
+    giftList: [
+      // {
+      //   id: 1,
+      //   img: '../assets/img/prize_01.png',
+      //   name: '小爱智能闹钟',
+      //   count: 1
+      // }
+    ]
+  }
+
+  computed = {
+    hasGifts () {
+      return !!this.giftList.length
+    },
+    btnText () {
+      return this.hasGifts ? '填写收件信息' : '立即集卡'
+    }
+  }
+
+  events = {
+    btnTap: () => {
+      this.hasGifts
+      ? wx.navigateTo({ url: 'address' })
+      : wx.switchTab({ url: 'home' })
+    }
+  }
+
+  components = {
+    MyButton
+  }
+}
+</script>
+
+<style lang="less" scoped>
+  .gift-wrap {
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding-bottom: 154rpx;
+  }
+
+  .material_gift_title {
+    display: flex;
+    height: 74rpx;
+    align-items: center;
+    font-weight: 600;
+    font-size: 30rpx;
+    .material_gift_divider {
+      background-image: -moz-linear-gradient( 90deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+      background-image: -webkit-linear-gradient( 90deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+      background-image: -ms-linear-gradient( 90deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+      width: 7rpx;
+      height: 33rpx;
+      border-radius: 4rpx;
+      margin-right: 28rpx;
+      margin-left: 53rpx;
+    }
+  }
+
+  .gift-item {
+    height: 160rpx;
+    padding: 30rpx;
+    margin-bottom: 20rpx;
+    display: flex;
+    align-items: center;
+      font-size: 30rpx;
+      color: #353535;
+    .gift_img {
+      width: 140rpx;
+    }
+    .gift_name {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .gift_count {
+      margin-left: 40rpx;
+    }
+  }
+
+  .address_btn {
+    position: fixed;
+    bottom: 40rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    &.no_gift {
+      bottom: 120rpx;
+    }
+  }
+
+  .no-gift {
+    text-align: center;
+    &_img {
+      width: 356rpx;
+      height: 380rpx;
+      margin-top: 150rpx;
+      margin-bottom: 50rpx;
+    }
+    &_text {
+      font-size: 24rpx;
+      color: #888888;
+      text {
+        display: block;
+      }
+    }
+  }
+</style>

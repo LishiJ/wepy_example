@@ -1,0 +1,144 @@
+<template>
+  <view class="disclaimer">
+    <view class="disclaimer_card">
+      <!-- 关闭按钮 -->
+      <image class="disclaimer_close" src='../assets/img/disclaimer_close.png' @tap="closeDisclaimer" />
+      <!-- 声明内容 -->
+      <text class="disclaimer_title">活动规则</text>
+      <view class="disclaimer_subtitle">
+        <view class="subtitle-divider"></view>
+        <text>活动时间</text>
+      </view>
+      <text class="disclaimer_paragraph">2019年5月15日上线“即客说爱你 周年送好礼”集卡活动，至2019年5月21日23时59分59秒止，集卡活动结束。</text>
+      <view class="disclaimer_subtitle">
+        <view class="subtitle-divider"></view>
+        <text>参与规则</text>
+      </view>
+      <text class="disclaimer_paragraph">1.	活动期间，用户通过扫描“即客说爱你 周年送好礼”集卡小程序二维码或点击微信小程序链接与小程序分享页面均可参与活动；</text>
+      <text class="disclaimer_paragraph">2.	活动期间，每名参与者可以邀请自己的微信好友参与活动，每名参与者首次参与集卡小程序可以为自己集到一张带字卡片，每集齐三张带字卡片即可获得一个“即客说爱你 周年送好礼”集卡小程序专属优惠券礼包与2019年5月20日至2019年5月21日在威马汽车·即客行APP中进行的“即客说爱你 周年送好礼”抽奖活动抽奖机会1次，同时有机会获得一个实物礼品；</text>
+      <text class="disclaimer_paragraph">3.	活动期间，受邀帮助活动参与者集卡的受邀好友可获得一个“即客说爱你 周年送好礼”集卡小程序专属优惠券礼包；</text>
+      <text class="disclaimer_paragraph">4.	活动期间，每个“即客说爱你 周年送好礼”集卡小程序专属优惠券礼包包含一张即客行APP即客充电满20元减5元优惠券与即客行APP旅游租车满500-120元优惠券；</text>
+      <text class="disclaimer_paragraph">5.	活动期间，每位受邀参与者仅可为一名参与者集一张带字卡，不可重复为同一名参与者集卡2次同时不能为不同2名活动参与者集卡，每位受邀参与者通过为参参与者集卡只能获得一个“即客说爱你 周年送好礼”集卡小程序专属优惠券礼包；</text>
+      <text class="disclaimer_paragraph">6.	活动期间，每位参与者与受邀参与者通过邀请好友集卡最多可获得4个“即客说爱你 周年送好礼”集卡小程序专属优惠券礼包，但获得的抽奖次数不设上限；</text>
+      <text class="disclaimer_paragraph">7.	活动期间内，每日将有实物礼品随机发放，但每位参与用户仅能随机获得1个实物礼品；</text>
+      <text class="disclaimer_paragraph">8.	活动有效期：自2019年5月15日至2019年5月21日</text>
+      <view class="disclaimer_subtitle">
+        <view class="subtitle-divider"></view>
+        <text>抽奖规则</text>
+      </view>
+      <text class="disclaimer_paragraph">第一步：参与“即客说爱你，周年送好礼”集卡小程序；</text>
+      <text class="disclaimer_paragraph">第二步：分享小程序，邀请好友参与活动，助力集卡；</text>
+      <text class="disclaimer_paragraph">第三步：每解锁一张完整卡片即可获得一次抽奖机会。</text>
+      <view class="disclaimer_subtitle">
+        <view class="subtitle-divider"></view>
+        <text>礼品设置</text>
+      </view>
+      <text class="disclaimer_paragraph">5月15日：小米小爱智能音箱*10</text>
+      <text class="disclaimer_paragraph">5月16日：LAMY凌美钢笔*10</text>
+      <text class="disclaimer_paragraph">5月17日：手冲咖啡壶套装*10</text>
+      <text class="disclaimer_paragraph">5月18日：爱奇艺VIP会员卡年卡*10</text>
+      <text class="disclaimer_paragraph">5月19日： 小米智能闹钟*10</text>
+      <text class="disclaimer_paragraph">5月20日： 星巴克猫爪杯*10</text>
+      <text class="disclaimer_paragraph">5月21日： 即客行保温杯*10</text>
+      <view class="disclaimer_subtitle">
+        <view class="subtitle-divider"></view>
+        <text>优惠券礼包查询方式与注意事项</text>
+      </view>
+      <text class="disclaimer_paragraph">1.“即客说爱你 周年送好礼”集卡小程序专属优惠券礼包礼券数量可在“即客说爱你 周年送好礼”集卡小程序“我的”板块中进行查看；</text>
+      <text class="disclaimer_paragraph">2.“即客说爱你 周年送好礼”集卡小程序专属优惠券礼包具体礼券请下载“即客行”APP登录查看详情；</text>
+      <text class="disclaimer_paragraph">3.“即客说爱你 周年送好礼”集卡小程序专属优惠券礼包所包含礼券具有有效期，请在有效期前进行使用，过期不可使用。</text>
+      <view class="disclaimer_subtitle">
+        <view class="subtitle-divider"></view>
+        <text>实物礼品抽取及查看</text>
+      </view>
+      <text class="disclaimer_paragraph">1.	参与者每合成一张活动卡片即有机会随机获得一个实物礼品；</text>
+      <text class="disclaimer_paragraph">2.	中奖参与者需如实并及时在活动中补充有效地址等领奖信息；</text>
+      <text class="disclaimer_paragraph">3.	中奖用参与者保证所提供的领奖信息清晰准确，如因领奖信息有误、不完整或不清晰而导致礼品未能正常发放的情况，则视为放弃礼品；</text>
+      <text class="disclaimer_paragraph">4.	每位参与者仅可获得1个实物礼品；</text>
+      <text class="disclaimer_paragraph">5.	活动结束后15个工作日内，礼品将统一进行派送，寄送至预留地址；</text>
+      <text class="disclaimer_paragraph">6.	本活动快递礼品的收货地址仅限中国大陆地区；活动礼品以收到的实物为准。</text>
+      <view class="disclaimer_subtitle">
+        <view class="subtitle-divider"></view>
+        <text>注意事项</text>
+      </view>
+      <text class="disclaimer_paragraph">1.	参与活动前，请详细阅读活动规则及相关条款。凡参与本次活动，则视为同意活动规则及免责条款；</text>
+      <text class="disclaimer_paragraph">2.	如有任何原因导致本次活动未能在符合本规则和条款下进行，在法律许可的情况下，威马汽车·即客行保留随时终止或更改本次活动的全部或部分内容的权利；</text>
+      <text class="disclaimer_paragraph">3.	活动参与者一旦参与本次活动即表示其同意受本声明的约束。若因参与者个人原因中途退出活动流程、或由不可抗力原因造成中途退出，并导致无法完整参与活动的情况，威马汽车·即客行不承担责任；</text>
+      <text class="disclaimer_paragraph">4.	严厉禁止和打击恶意刷奖行为。对于恶意刷奖，威马汽车·即客行有权取消中奖者获奖资格，并保留相关法律权利；</text>
+      <text class="disclaimer_paragraph">5.	对于任何通过不正当手段参与活动者，威马汽车·即客行有权在不事先通知的情况下取消其参加活动及得奖资格；</text>
+      <text class="disclaimer_paragraph">6.	威马汽车·即客行不对因网络传输原因而导致参加者提交的信息错误承担任何责任；</text>
+      <text class="disclaimer_paragraph">7.	如遇不可抗力等因素，本次活动因故无法进行时，威马汽车·即客行在法律允许的范围内有权决定取消、终止、修改或暂停本活动。</text>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class Disclaimer extends wepy.page {
+    onLoad () {
+      console.log('子页面')
+    }
+    
+    methods = {
+      closeDisclaimer() {
+        wx.navigateBack({
+          delta: 1
+        })
+      }
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  .disclaimer {
+    min-height: calc(100vh - 104rpx);
+    padding: 52rpx;
+    background-color: #d2fee9;
+    .disclaimer_card {
+      position: relative;
+      padding: 35rpx;
+      background-color: rgb(255, 255, 255);
+      box-shadow: 0px 0px 20px 0px rgba(8, 10, 36, 0.1);
+      .disclaimer_close {
+        position: absolute;
+        right: -22.5rpx;
+        top: -22.5rpx;
+        width: 45rpx;
+        height: 45rpx;
+        border-radius: 50%;
+      }
+      .disclaimer_title, .disclaimer_subtitle, .disclaimer_paragraph {
+        display: block;
+      }
+      .disclaimer_title {
+        text-align: center;
+        color: #000000;
+        font-size: 36rpx;
+        margin-bottom: 40rpx;
+        font-weight: 600;
+      }
+      .disclaimer_subtitle {
+        color: #000000;
+        font-size: 30rpx;
+        margin-top: 30rpx;
+        margin-bottom: 20rpx;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        .subtitle-divider {
+          background-image: -moz-linear-gradient( 90deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+          background-image: -webkit-linear-gradient( 90deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+          background-image: -ms-linear-gradient( 90deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+          width: 7rpx;
+          height: 33rpx;
+          margin-right: 28rpx;
+        }
+      }
+      .disclaimer_paragraph {
+        color: #353535;
+        font-size: 24rpx;
+        line-height: 40rpx;
+      }
+    }
+  }
+</style>

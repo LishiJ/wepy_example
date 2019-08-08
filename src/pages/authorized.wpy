@@ -1,0 +1,91 @@
+<template>
+  <view class="authorized">
+    <!-- LOGO -->
+    <image class="logo" src="../assets/img/logo.png" />
+    <!-- 提示语 -->
+    <view class="authorized_msg">
+      <text>您暂未获取微信授权,将无法正常参与活动。</text>
+      <text>如需正常使用,请点击"授权登录"按钮,打开电话号码等信息的授权。</text>
+    </view>
+    <!-- 授权按钮 -->
+    <button class="authorized_btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+    <!-- 免责声明 -->
+    <text class="disclaimer" @tap="toDisclaimer">免责声明&gt;</text>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class Authorized extends wepy.page {
+    config = {
+      navigationBarTitleText: '授权页'
+    }
+
+    data = {
+      title: 'Authorized'
+    }
+
+    methods = {
+      // 获取授权用户信息
+      getUserInfo(e) {
+        // save userinfo
+        const userInfo = e.detail
+        this.$parent.globalData = {...this.$parent.globalData, ...userInfo}
+        // 跳转至首页
+        wx.switchTab({
+          url: 'home'
+        })
+      },
+      // 查看免责声明
+      toDisclaimer() {
+        wx.navigateTo({
+          url: 'disclaimer'
+        })
+      }
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  .authorized {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #0A0526;
+  }
+  
+  .logo {
+    width: 120rpx;
+    height: 120rpx;
+  }
+
+  .authorized_msg {
+    margin-top: 100rpx;
+    font-size: 24rpx;
+    text {
+      display: block;
+    }
+  }
+
+  .authorized_btn {
+    width: 539rpx;
+    height: 94rpx;
+    font-size: 36rpxx;
+    border-radius: 47rpx;
+    border: none;
+    background-image: -moz-linear-gradient( 0deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+    background-image: -webkit-linear-gradient( 0deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+    background-image: -ms-linear-gradient( 0deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+    margin-top: 70rpx;
+  }
+
+  .disclaimer {
+    font-size: 24rpx;
+    color: #000000;
+    margin-top: 26rpx;
+    padding: 10rpx;
+  }
+</style>

@@ -1,0 +1,108 @@
+<template>
+  <view class="disclaimer">
+    <view class="disclaimer_card">
+      <!-- 关闭按钮 -->
+      <image class="disclaimer_close" src='../assets/img/disclaimer_close.png' @tap="closeDisclaimer" />
+      <!-- 声明内容 -->
+      <text class="disclaimer_title">免责声明</text>
+      <text class="disclaimer_paragraph">本次抽奖活动秉着公平、公正、公开、真实的原则，对于本次抽奖活动，我司声明以下免责条款，参加活动前请用户仔细阅读以下条款，参加本次活动即表明用户了解并接受以下所有条款：</text>
+      <view class="disclaimer_subtitle">
+        <view class="subtitle-divider"></view>
+        <text>免责事项</text>
+      </view>
+      <text class="disclaimer_paragraph">1. 本活动期间发生任何不可抗力事件致使本抽奖活动或本次抽奖目的不能实现，威马汽车·即客行因此免责。不可抗力是指不能控制、不可预见或不能避免，即使预见亦无法避免的事件，该事件使任何一方根据本协议履行其全部或部分义务已不可能。包括社会异常事件、自然灾害或政府管制行为而造成的网络关闭等非基于威马汽车·即客行过错的行为；</text>
+      <text class="disclaimer_paragraph">2. 鉴于互联网之特殊性质，活动期间若发生黑客攻击、电信部门技术调整导致重大影响、病毒侵袭、网络故障、带宽、域名解析故障或其他网络设备或技术提供商的服务延迟、服务障碍或任何其他类似事件，致使活动无法正常进行，威马汽车·即客行因此免责；</text>
+      <text class="disclaimer_paragraph">3. 用户自身主观过错或恶意，如不按正常流程操作、填写信息不真实、不完整等类似情形致使此次抽奖无效、无法核验用户真实信息而不能领取礼品的，威马汽车·即客行免责；</text>
+      <text class="disclaimer_paragraph">4. 任何由于网络问题、黑客攻击、计算机病毒侵入或发作、因政府管制而造成的暂时性关闭等影响网络正常运行的不可抗力而造成的非正常获奖均视为无效，并且威马汽车·即客行免责；</text>
+      <text class="disclaimer_paragraph">5. 由于第三方网站通过技术手段恶意攻击或篡改致使中奖发生错误，威马汽车·即客行不负任何法律或经济责任，中奖信息数据以威马汽车·即客行公布的为准。</text>
+      <view class="disclaimer_subtitle">
+        <view class="subtitle-divider"></view>
+        <text>关于抽奖负责事项</text>
+      </view>
+      <text class="disclaimer_paragraph">1.	威马汽车·即客行对中奖者及其各自礼品的决定具有最终约束力；</text>
+      <text class="disclaimer_paragraph">2.	活动礼品的领取以用户填写的信息为准。若出现冒领等情况，威马汽车·即客行不承担任何责任；</text>
+      <text class="disclaimer_paragraph">3.	具体获奖礼品免责声明 
+        a)	礼品的品牌和型号以最终发放时的为准，页面上所展示的礼品如果出现缺货，威马汽车·即客行有权用同等价值的其他品牌或型号代替；
+        b)	实物类礼品在送递过程中发生礼品的损毁偷换或其他情况，由承运方与中奖用户自行解决，威马汽车·即客行不负任何法律责任。
+      </text>
+      <text class="disclaimer_paragraph">4.	活动过程中，用户所中奖项，威马汽车·即客行以用户所留地址信息为准寄送礼品，由此引起的任何纠纷，威马汽车·即客行免责；</text>
+      <text class="disclaimer_paragraph">5.	活动过程中，若用户中奖后出现因黑客入侵、电脑病毒、信息泄露他人等个人原因而导致礼品被盗用情况发生，威马汽车·即客行不负责追回及补偿。</text>
+      <view class="disclaimer_subtitle">
+        <view class="subtitle-divider"></view>
+        <text>关于解释权</text>
+      </view>
+      <text class="disclaimer_paragraph">本抽奖活动最终解释权归威马汽车·即客行运营方所有。 </text>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class Disclaimer extends wepy.page {
+    onLoad () {
+      console.log('子页面')
+    }
+
+    methods = {
+      closeDisclaimer() {
+        wx.navigateBack({
+          delta: 1
+        })
+      }
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  .disclaimer {
+    min-height: calc(100vh - 104rpx);
+    padding: 52rpx;
+    background-color: #d2fee9;
+    .disclaimer_card {
+      position: relative;
+      padding: 35rpx;
+      background-color: rgb(255, 255, 255);
+      box-shadow: 0px 0px 20px 0px rgba(8, 10, 36, 0.1);
+      .disclaimer_close {
+        position: absolute;
+        right: -22.5rpx;
+        top: -22.5rpx;
+        width: 45rpx;
+        height: 45rpx;
+        border-radius: 50%;
+      }
+      .disclaimer_title, .disclaimer_subtitle, .disclaimer_paragraph {
+        display: block;
+      }
+      .disclaimer_title {
+        text-align: center;
+        color: #000000;
+        font-size: 36rpx;
+        margin-bottom: 40rpx;
+        font-weight: 600;
+      }
+      .disclaimer_subtitle {
+        color: #000000;
+        font-size: 30rpx;
+        margin-top: 30rpx;
+        margin-bottom: 20rpx;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        .subtitle-divider {
+          background-image: -moz-linear-gradient( 90deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+          background-image: -webkit-linear-gradient( 90deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+          background-image: -ms-linear-gradient( 90deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+          width: 7rpx;
+          height: 33rpx;
+          margin-right: 28rpx;
+        }
+      }
+      .disclaimer_paragraph {
+        color: #353535;
+        font-size: 24rpx;
+        line-height: 40rpx;
+      }
+    }
+  }
+</style>

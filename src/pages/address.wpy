@@ -1,0 +1,68 @@
+<template>
+  <view>
+    <view class="form-item card">
+      <text>收件人：</text>
+      <input type="text" placeholder="请输入收件人姓名">
+    </view>
+    <view class="form-item card">
+      <text>手机号码：</text>
+      <input type="text" placeholder="请输入收件人姓名">
+    </view>
+    <view class="form-item card">
+      <text>配送地址：</text>
+      <input type="text" placeholder="请输入收件人姓名">
+    </view>
+    <!-- 提交信息 -->
+    <MyButton class="address_btn">提交信息</MyButton>
+    <view class="address_desc">
+      <text>*活动结束后工作人员会及时与您取得联系，核验收件信息并寄送奖品</text>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import MyButton from '../components/button/index'
+
+export default class Address extends wepy.page {
+  components = {
+    MyButton
+  }
+}
+</script>
+
+<style lang="less" scoped>
+  .form-item {
+    line-height: 80rpx;
+    display: flex;
+    padding: 0 30rpx;
+    margin-bottom: 20rpx;
+    &:first-child {
+      margin-top: 20rpx;
+    }
+    text {
+      width: 160rpx;
+      font-size: 30rpx;
+    }
+    input {
+      height: 80rpx;
+      flex: 1;
+      padding-right: 10rpx;
+      font-size: 24rpx;
+      &::placeholder {
+        color: #888888;
+      }
+    }
+  }
+
+  .address_btn {
+    margin-top: 65rpx;
+  }
+
+  .address_desc {
+    text-align: center;
+    font-size: 14rpx;
+    color: #888888;
+    margin-top: 10rpx;
+  }
+</style>

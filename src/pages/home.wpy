@@ -1,0 +1,293 @@
+<template>
+  <view>
+    <view class="home_top">
+      <!-- banner -->
+      <view class="banner">
+        <image src="../assets/img/banner.png" />
+        <view class="banner_bottom"></view>
+      </view>
+      <!-- 活动简介 -->
+      <view class="activity_brief">
+        <view class="activity_info">
+          <!-- icon -->
+          <image class="activity_icon" src='../assets/img/home_coupon.png' />
+          <!-- 标题 -->
+          <view class="activity_title">
+            <view class="title_divider"></view>
+            <text class="title_text">参与即可得券包</text>
+            <view class="title_divider"></view>
+          </view>
+          <!-- description -->
+          <view class="activity_desc">
+            <text>参与集卡活动</text>
+            <text>合成卡片获得即客行专属礼券</text>
+          </view>
+        </view>
+        <view class="activity_info">
+          <!-- icon -->
+          <image class="activity_icon" src='../assets/img/home_gift.png' />
+          <!-- 标题 -->
+          <view class="activity_title">
+            <view class="title_divider"></view>
+            <text class="title_text">惊喜礼品享不停</text>
+            <view class="title_divider"></view>
+          </view>
+          <!-- description -->
+          <view class="activity_desc">
+            <text>5月15日-5月21日</text>
+            <text>每日合成卡片可随机获得实物礼品与抽奖机会</text>
+          </view>
+        </view>
+        <!-- 集卡按钮 -->
+        <button class="activity_btn">立即集卡</button>
+      </view>
+      <!-- 活动规则 -->
+      <view class="activity_rule">
+        <text @tap="navigateTo('activityRule')">活动规则&gt;</text>
+      </view>
+      <!-- 实物奖品 -->
+      <view class="prize">
+        <!-- 标题栏 -->
+        <view class="prize_title">
+          <view class="prize_subtitle">
+            <view class="subtitle-divider"></view>
+            <text>实物奖品</text>
+          </view>
+          <view class="prize_operation" @tap="toggleFold">
+            <text>{{ fold ? '下拉查看' : '收起' }}</text>
+            <image class="{{fold ? '' : 'unfold'}}" src="../assets/img/home_direction.png" />
+          </view>
+        </view>
+        <!-- 实物奖品列表 -->
+        <view class="prize_list" wx:if="{{!fold}}">
+          <repeat for="{{prizeList}}" index="index" item="item" key="index">
+            <view class="prize_item">
+              <view class="prize_img">
+                <image src="{{item.img}}" mode="aspectFit" />
+              </view>
+              <text>{{item.name}}</text>
+            </view>
+          </repeat>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Home extends wepy.page {
+    data = {
+      fold: true,
+      prizeList: [
+        {
+          img: '../assets/img/prize_01.png',
+          name: '小爱智能闹钟'
+        },
+        {
+          img: '../assets/img/prize_09.png',
+          name: '爱奇艺年卡'
+        },
+        {
+          img: '../assets/img/prize_01.png',
+          name: '小爱智能闹钟'
+        },
+        {
+          img: '../assets/img/prize_09.png',
+          name: '爱奇艺年卡'
+        },
+        {
+          img: '../assets/img/prize_01.png',
+          name: '小爱智能闹钟'
+        },
+        {
+          img: '../assets/img/prize_09.png',
+          name: '爱奇艺年卡'
+        }
+      ]
+    }
+
+    methods = {
+      toggleFold() {
+        this.fold = !this.fold
+      },
+      navigateTo(url) {
+        wx.navigateTo({ url })
+      }
+    }
+
+    onLoad() {
+      this.$parent.getUserInfo((userInfo) => {
+        console.log(userInfo)
+      })
+    }
+  }
+</script>
+
+<style lang="less" scoped>
+  .home_top {
+    position: relative;
+    padding-top: 350rpx;
+  }
+  .banner {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    top: 0;
+    image {
+      width: 100%;
+    }
+    .banner_bottom {
+      position: absolute;
+      width: 100%;
+      height: 90rpx;
+      bottom: -40rpx;
+      border-radius: 50%;
+      background-color: #ffffff;
+    }
+  }
+  .activity_brief {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 20px 0px rgba(8, 10, 36, 0.1);
+    margin: 0rpx 54rpx 47rpx;
+    z-index: 2;
+    text-align: center;
+    padding: 50rpx 20rpx;
+    .activity_btn {
+      position: absolute;
+      background-image: -moz-linear-gradient( 0deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+      background-image: -webkit-linear-gradient( 0deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+      background-image: -ms-linear-gradient( 0deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+      width: 539rpx;
+      height: 94rpx;
+      border: none;
+      font-size: 36rpx;
+      font-weight: 600;
+      color: #0A0526;
+      border-radius: 47rpx;
+      bottom: -47rpx;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  .activity_info {
+    margin-bottom: 60rpx;
+    .activity_icon {
+      width: 50rpx;
+      height: 50rpx;
+    }
+    .activity_title {
+      margin: 10rpx 0rpx 20rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .title_divider {
+        border-radius: 3px;
+        background-image: -moz-linear-gradient( 180deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+        background-image: -webkit-linear-gradient( 180deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+        background-image: -ms-linear-gradient( 180deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+        width: 43rpx;
+        height: 8rpx;
+      }
+      .title_text {
+        font-size: 36rpx;
+        font-weight: 600;
+        color: #0A0526;
+        margin: 0 38rpx;
+      }
+    }
+    .activity_desc {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 24rpx;
+      color: #353535;
+    }
+  }
+  .activity_rule {
+    color: #000000;
+    font-size: 24rpx;
+    text-align: center;
+    padding-top: 20rpx;
+    padding-bottom: 8rpx;
+    text {
+      padding: 10rpx;
+    }
+  }
+  .prize {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 20px 0px rgba(8, 10, 36, 0.1);
+    margin: 20rpx;
+    min-height: 60rpx;
+  }
+  .prize_title {
+    line-height: 80rpx;
+    padding: 0 34rpx;
+    display: flex;
+    justify-content: space-between;
+    .prize_subtitle {
+      color: #000000;
+      font-size: 30rpx;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      .subtitle-divider {
+        background-image: -moz-linear-gradient( 90deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+        background-image: -webkit-linear-gradient( 90deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+        background-image: -ms-linear-gradient( 90deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+        width: 7rpx;
+        height: 33rpx;
+        margin-right: 26rpx;
+      }
+    }
+    .prize_operation {
+      text {
+        font-size:24rpx;
+      }
+      image {
+        width: 24rpx;
+        height: 15rpx;
+        margin-left: 20rpx;
+        transition: all 0.2s;
+        &.unfold {
+          transform: rotate(180deg)
+        }
+      }
+    }
+  }
+  .prize_list {
+    display: flex;
+    justify-content: space-between;
+    padding: 30rpx 50rpx;
+    flex-wrap: wrap;
+    .prize_item {
+      width: 188rpx;
+      .prize_img {
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0px 0px 20px 0px rgba(8, 10, 36, 0.1);
+        height: 188rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        image {
+          width: 100%;
+          height: 100%;
+          // width: 148rpx;
+          // height: 148rpx;
+        }
+      }
+      text {
+        display: block;
+        color: #353535;
+        font-size: 24rpx;
+        line-height: 60rpx;
+        text-align: center;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+</style>

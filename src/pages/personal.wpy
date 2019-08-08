@@ -1,0 +1,144 @@
+<template>
+  <view>
+    <!-- 抽奖次数 -->
+    <view class="luckydraw">
+      <text class="luckydraw_times">{{luckydraw_times}}</text>
+      <text class="luckydraw_desc">可抽奖次数</text>
+    </view>
+    <!-- 获取礼包数 -->
+    <view>
+      <view class="gift card">
+        <image class="gift_img" src="../assets/img/personal_coupon.png" mode="scaleToFill" lazy-load="false" />
+        <text class="gift_text">已获得即客礼包</text>
+        <text class="gift_count">{{gift_count}}</text>
+      </view>
+      <text class="gift_desc">*每位参与者最多可获得4份礼包。礼包详情请下载即客行APP查看。</text>
+    </view>
+    <!-- 实物奖品 -->
+    <view class="material_gift card">
+      <view class="material_gift_text">
+        <view class="material_gift_title">
+          <view class="material_gift_divider"></view>
+          <text>实物奖品</text>
+        </view>
+        <text class="material_gift_link" @tap="toGiftList">点击查看＞</text>
+      </view>
+      <image class="material_gift_img" src="../assets/img/personal_gift.png" />
+    </view>
+    <!-- APP下载按钮 -->
+    <MyButton className="down_app">下载即客行APP</MyButton>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import MyButton from '../components/button/index'
+
+export default class Personal extends wepy.page {
+  data = {
+    luckydraw_times: 3,
+    gift_count: 1
+  }
+
+  components = {
+    MyButton: MyButton
+  }
+
+  methods = {
+    toGiftList() {
+      wx.navigateTo({ url: 'gift' })
+    }
+  }
+
+  events = {
+    btnTap: () => {
+      console.log('download app...')
+    }
+  }
+}
+</script>
+
+<style lang="less" scoped>
+  .luckydraw {
+    text-align: center;
+    padding-top: 30rpx;
+    padding-bottom: 120rpx;
+    text {
+      display: block;
+    }
+    &_times {
+      font-size: 100rpx;
+      background-image: -webkit-gradient(linear, left 0, right 0, from(rgb(1,252,252)), to(rgb(107,252,182)));
+      -webkit-background-clip: text; /*必需加前缀 -webkit- 才支持这个text值 */
+      -webkit-text-fill-color: transparent;
+    }
+    &_desc {
+      font-size: 24rpx;
+      color: #0A0526;
+    }
+  }
+  .gift {
+    padding: 0 35rpx;
+    line-height: 80rpx;
+    display: flex;
+    align-items: center;
+    font-size: 32rpx;
+    color: #353535;
+    &_img {
+      width: 54rpx;
+      height: 54rpx;
+    }
+    &_text {
+      flex: 1;
+      padding-left: 23rpx;
+      
+    }
+  }
+  .gift_desc {
+    display: block;
+    text-align: center;
+    margin: 8rpx 20rpx;
+    color: #888888;
+    font-size: 14rpx;
+  }
+
+  .material_gift {
+    margin-top: 35rpx;
+    padding: 20rpx;
+    display: flex;
+    align-items: center;
+    &_text {
+      flex: 1;
+    }
+    &_title {
+      display: flex;
+      align-items: center;
+      text {
+        font-weight: 600;
+        font-size: 30rpx;
+      }
+    }
+    &_divider {
+      background-image: -moz-linear-gradient( 90deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+      background-image: -webkit-linear-gradient( 90deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+      background-image: -ms-linear-gradient( 90deg, rgb(1,252,252) 0%, rgb(107,252,182) 100%);
+      width: 7rpx;
+      height: 33rpx;
+      border-radius: 4rpx;
+      margin-right: 28rpx;
+      margin-left: 12rpx;
+    }
+    &_link {
+      font-size: 24rpx;
+      padding-left: 44rpx;
+    }
+    &_img {
+      width: 369rpx;
+      height: 206rpx;
+    }
+  }
+
+  .down_app {
+    margin-top: 216rpx;
+  }
+</style>

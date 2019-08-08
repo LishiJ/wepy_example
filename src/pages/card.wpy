@@ -1,0 +1,126 @@
+<template>
+  <view class="card_wrap">
+    <!-- 背景图片 -->
+    <image class="card_bg" src="../assets/img/card_bg.png" mode="scaleToFill" lazy-load="false" />
+    <!-- title -->
+    <view class="card_title">
+      <image src="../assets/img/card_title.png" mode="aspectFit" />
+    </view>
+    <!-- card -->
+    <view class="card_text_wrap">
+      <image class="card_text_bg" src="../assets/img/card_box.png" mode="scaleToFill" lazy-load="false" />
+      <view class="card_text_box">
+        <text class="card_text collected">即</text>
+        <text class="card_text">客</text>
+        <text class="card_text collected">行</text>
+      </view>
+      <view class="card_text_desc">
+        <text>集齐三张卡片即可获得券包与抽奖机会</text>
+        <text>更有机会获得实物礼品</text>
+      </view>
+    </view>
+    <!-- button -->
+    <view class="btn_box">
+      <SimpleMyButtom type="simple">合成卡片</SimpleMyButtom>
+      <MyButton>邀请集卡</MyButton>
+    </view>
+    <view class="download_text">
+      <text @tap="downloadApp">下载即客行App使用礼券＞</text>
+    </view>
+    <van-notify />
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import MyButton from '../components/button/index'
+
+export default class Card extends wepy.page {
+  data = {}
+
+  components = {
+    MyButton,
+    SimpleMyButtom: MyButton
+  }
+
+  methods = {
+    downloadApp () {
+      console.log('app downloading...')
+    }
+  }
+}
+</script>
+
+<style lang="less" scoped>
+  .card_wrap {
+    height: 100vh;
+    .card_bg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: -1;
+    }
+    .card_title {
+      text-align: center;
+      image {
+        width: 570rpx;
+        height: 380rpx;
+      }
+    }
+    .card_text_wrap {
+      box-sizing: border-box;
+      margin: 0 20rpx;
+      height: 430rpx;
+      padding: 120rpx 76rpx 0rpx;
+      position: relative;
+      .card_text_bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: -1;
+      }
+      .card_text_box {
+        display: flex;
+        justify-content: space-between;
+        .card_text {
+          border-radius: 10px;
+          width: 170rpx;
+          height: 170rpx;
+          line-height: 170rpx;
+          font-size: 100rpx;
+          color: rgb(255, 255, 255);
+          text-align: center;
+          background-color: #eeeeee;
+          &.collected {
+            background-image: linear-gradient( 45deg, rgb(255,204,102) 0%, rgb(255,233,141) 100%);
+          }
+        }
+      }
+      .card_text_desc {
+        text-align: center;
+        color: #dedede;
+        font-size: 24rpx;
+        margin-top: 10rpx;
+        text {
+          display: block;
+        }
+      }
+    }
+    .btn_box {
+      display: flex;
+      margin: 50rpx 30rpx 45rpx;
+      justify-content: space-between;
+      & > button {
+        width: calc(~'50% - 15rpx');
+        margin: 0;
+      }
+    }
+    .download_text {
+      text-align: center;
+      font-size: 24rpx;
+      color: #666666;
+    }
+  }
+</style>
