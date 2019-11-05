@@ -47,7 +47,7 @@ npm install
 
 ``` sh
 # clone
-git clone https://github.com/LishiJ/wepy_example.git
+git clone https://github.com/seiwhale/wepy_example.git
 # install
 yarn / npm install
 # run
